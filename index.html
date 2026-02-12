@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Special Question ❤️</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #ffeef2;
+            font-family: 'Arial', sans-serif;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        #container {
+            background: white;
+            padding: 40px;
+            border-radius: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            max-width: 450px;
+            width: 85%;
+            z-index: 1;
+        }
+
+        h1 {
+            color: #d63384;
+            font-size: 2.2rem;
+            margin-bottom: 25px;
+        }
+
+        .gif-container img {
+            width: 100%;
+            max-width: 300px;
+            border-radius: 20px;
+            margin-bottom: 25px;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1px;
+            height: 100px;
+            position: relative;
+        }
+
+        button {
+            padding: 12px 30px;
+            font-size: 1.3rem;
+            font-weight: bold;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        #yesBtn {
+            background-color: #ff4d6d;
+            color: white;
+            box-shadow: 0 4px 15px rgba(255, 77, 109, 0.4);
+        }
+
+        #yesBtn:hover {
+            transform: scale(1.15);
+            background-color: #ff1e4d;
+        }
+
+        #noBtn {
+            background-color: #adb5bd;
+            color: white;
+            position: relative;
+            z-index: 999;
+			transition: none;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+
+        #celebration h1 {
+            color: #ff4d6d;
+            animation: heartBeat 1.2s infinite;
+        }
+
+        @keyframes heartBeat {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="container">
+        <div id="askSection">
+            <div class="gif-container">
+                <img id="mainGif" src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExdzM5MDN2cWZ6bnBtajZwY2d5c2gyaTJodGh0anQ5czJsOXR6amowYyZlcD12MV9naWZzX3NlYXJjaCZjdD1n/RSk4bOw2ptIkAcVxK2/giphy.gif" alt="Puppy Eyes">
+            </div>
+            <h1 id="question">My baby, will you do me a great honour and be my Valentine?</h1>
+            <div class="buttons">
+                <button id="yesBtn">YES!</button>
+                <button id="noBtn">No</button>
+            </div>
+        </div>
+
+        <div id="celebration" class="hidden">
+            <div class="gif-container">
+                <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExN2tueW96M290NHBqam9pZzRreXp4dmI0Z3R6Z3ZueXp4dmI0ZyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/l41lH4ADRtAYnGsLe/giphy.gif" alt="Celebration">
+            </div>
+            <h1>I KNEW YOU'D SAY YES :3 ❤️</h1>
+        </div>
+    </div>
+
+    <script>
+        const noBtn = document.getElementById('noBtn');
+        const yesBtn = document.getElementById('yesBtn');
+        const askSection = document.getElementById('askSection');
+        const celebration = document.getElementById('celebration');
+
+        function moveButton() {
+            const padding = 20;
+            const x = Math.random() * (window.innerWidth - noBtn.offsetWidth - padding);
+            const y = Math.random() * (window.innerHeight - noBtn.offsetHeight - padding);
+            
+            noBtn.style.position = 'fixed';
+            noBtn.style.left = `${x}px`;
+            noBtn.style.top = `${y}px`;
+        }
+
+        noBtn.addEventListener('mouseover', moveButton);
+        noBtn.addEventListener('touchstart', (e) => {
+            e.preventDefault();
+            moveButton();
+        });
+
+        yesBtn.addEventListener('click', () => {
+            askSection.classList.add('hidden');
+            celebration.classList.remove('hidden');
+            noBtn.style.display = 'none';
+        });
+    </script>
+</body>
+</html>
